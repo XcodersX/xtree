@@ -4,8 +4,13 @@
  */
 package com.bookshop.gui;
 
+import com.jtattoo.plaf.mint.MintLookAndFeel;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -20,31 +25,29 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         setTitle("Universal BookShop");
         setFrameIcon();
-        this.setSize(500,350);
-        jPanel1.setLayout(new GridLayout(3,2));
-        jPanel1.setSize(450,300);
+        //this.setSize(500,350);
+       // jPanel1.setLayout(new GridLayout(4,1));
+       // jPanel1.setSize(450,300);
     }
 
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         btnAddBook = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jdpMyWindow = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("MainFrame"); // NOI18N
         setResizable(false);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnAddBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/book.png"))); // NOI18N
         btnAddBook.setText("Add Book");
@@ -54,12 +57,15 @@ public class MainWindow extends javax.swing.JFrame {
                 btnAddBookActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddBook);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/trash.png"))); // NOI18N
-        jButton1.setText("Remove Book");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/technorati.png"))); // NOI18N
+        jButton1.setText("About Us");
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jButton1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/find.png"))); // NOI18N
         jButton2.setText("Search Books");
@@ -69,17 +75,6 @@ public class MainWindow extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/interact.png"))); // NOI18N
-        btnUpdate.setText("Update");
-        btnUpdate.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(btnUpdate);
-
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/Print.png"))); // NOI18N
-        btnPrint.setText("Print Book List");
-        btnPrint.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(btnPrint);
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bookshop/gui/shutdown.png"))); // NOI18N
         btnExit.setText("Exit");
@@ -89,23 +84,59 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jdpMyWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdpMyWindow))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -113,12 +144,24 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBookActionPerformed
         // TODO add your handling code here:
-        InsertFrame inf = new InsertFrame();
-        inf.setVisible(true);
+        //InsertFrame inf = new InsertFrame();
+        //inf.setVisible(true);
+        InsertWindow iw = new InsertWindow();
+        jdpMyWindow.add(iw);
+        iw.setVisible(true);
+        
     }//GEN-LAST:event_btnAddBookActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // through this action we can direct to search window
+        
+       // SearchWindow searchW = new SearchWindow();
+       // searchW.setVisible(true);
+        SearchPrintWindow spw = new SearchPrintWindow();
+        jdpMyWindow.add(spw);
+        spw.setVisible(true);
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
@@ -129,6 +172,13 @@ public class MainWindow extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            // TODO add your handling code here:
+        AboutUs abtUs = new AboutUs();
+        jdpMyWindow.add(abtUs);
+        abtUs.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void setFrameIcon(){
     this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("bookshelf.png")));
@@ -162,6 +212,12 @@ public class MainWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    //Used to set the theme for the Forms
+                    UIManager.setLookAndFeel(new MintLookAndFeel());
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 new MainWindow().setVisible(true);
             }
         });
@@ -169,10 +225,9 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnPrint;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JDesktopPane jdpMyWindow;
     // End of variables declaration//GEN-END:variables
 }
